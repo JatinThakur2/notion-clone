@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Heading } from "lucide-react";
+import { Heroes } from "./_components/Heroes";
+import { Heading } from "./_components/heading";
+
 const MarketingPage = () => {
   return (
     <div className="min-h-full flex flex-col">
@@ -8,6 +9,7 @@ const MarketingPage = () => {
         md:justify-start text-center gap-y-8 flex-1 px-6 pd-10"
       >
         <Heading />
+        <Heroes />
       </div>
     </div>
   );
