@@ -1,5 +1,6 @@
-import { Heroes } from "./_components/Heroes";
+import { Heroes } from "./_components/heroes";
 import { Heading } from "./_components/heading";
+import { Footer } from "./_components/footer";
 
 const MarketingPage = () => {
   return (
@@ -11,6 +12,7 @@ const MarketingPage = () => {
         <Heading />
         <Heroes />
       </div>
+      <Footer />
     </div>
   );
 };
