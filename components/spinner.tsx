@@ -1,8 +1,7 @@
-import { Loader, SignalZero } from "lucide-react";
+import { Loader } from "lucide-react";
 import { cva, type VariantProps} from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "./ui/button";
 
 const spinnerVariants = cva(
     "text-muted-foreground animate-spin",
@@ -20,6 +19,7 @@ const spinnerVariants = cva(
        },
     },
 );
+
 interface SpinnerProps extends VariantProps<typeof spinnerVariants>{}
 
 export const Spinner = ({
