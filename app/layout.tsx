@@ -7,7 +7,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata = { 
   title: "Jotion",
   description:
     " Jotion is the connected workspace where better, faster work happens ",
