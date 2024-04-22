@@ -2,7 +2,7 @@
 const DocumentsPage = () => {
     return (  
     <div>
-        
+        <p>test</p>
     </div>);
 }
  
