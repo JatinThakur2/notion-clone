@@ -21,32 +21,48 @@ export const Navigation = () => {
         event.preventDefault();
         event.stopPropagation();
 
-        isResizingref.current=true;
+        isResizingref.current = true;
         document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handlemouseUp);
+        document.addEventListener("mouseup", handleMouseUp);
         };
 
     const handleMouseMove = (event: MouseEvent)=>{
-        if(!isResizingref.current) return;
+        if(!isResizingref.current) 
+            return;
         let newWidth = event.clientX;
 
         if (newWidth < 240) newWidth = 240;
         if (newWidth > 480) newWidth = 480;
 
         if (sidebarRef.current && navbarRef.current) {
-            sidebarRef.current.style.width = '${newWidth}px';
-            navbarRef.current.style.setProperty("left",'${newWidth}px');
-            navbarRef.current.style.setProperty("width",'calc(100% - ${newWidth}px)');
+            sidebarRef.current.style.width = `${newWidth}px`;
+            navbarRef.current.style.setProperty("left",`${newWidth}px`);
+            navbarRef.current.style.setProperty("width",`calc(100% - ${newWidth}px)`);
         }
     };
 
-    const handlemouseUp=() => {
+    const handleMouseUp=() => {
         isResizingref.current = false;
         document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handlemouseUp)
-    } 
+        document.removeEventListener("mouseup", handleMouseUp)
+    } ;
 
-    
+    const resetWidth = () => {
+            if(sidebarRef.current && navbarRef.current) {
+                setIsCollapsed(false);
+                setIsResetting(true);
+                sidebarRef.current.style.width = isMobile ? "100%" : "240px";
+                navbarRef.current.style.setProperty(
+                    "width",
+                    isMobile ? "0": "calc(100% -240px)"
+                );
+                navbarRef.current.style.setProperty(
+                    "left",
+                    isMobile ? '100': "240px"
+                );
+                setTimeout(() => setIsResetting(false), 300);
+            }
+        }
 
     return ( 
         <>
@@ -67,17 +83,18 @@ export const Navigation = () => {
                     <p>Action Items</p>
                 </div>
                 <div className="mt-4">
-                    <p>Documents</p>
+                    <p>Document</p>
                 </div>
                 <div 
-                onMouseDown={() => {}}
-                onClick={() => {}}
+                onMouseDown={handleMouseDown}
+                onClick={resetWidth}
                 className="opacity-0 group-hover/sidebar:opacity-100
                 trasition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
                 />
             
          </aside> 
-         <div ref={navbarRef}
+         <div 
+         ref={navbarRef}
          className={cn(
             "absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]",
             isResetting && "transition-all ease-in-out duration-300",
