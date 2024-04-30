@@ -1,9 +1,9 @@
-
 const DocumentsPage = () => {
-    return (  
+  return (
     <div>
-        <p>testing git and docker</p>
-    </div>);
-}
- 
+      <p>testing git and docker</p>
+    </div>
+  );
+};
+
 export default DocumentsPage;

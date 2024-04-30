@@ -7,7 +7,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata = { 
+export const metadata = {
   title: "Jotion",
   description:
     " Jotion is the connected workspace where better, faster work happens ",
@@ -30,12 +30,12 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-       <ConvexClientProvider>
+        <ConvexClientProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -45,7 +45,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
-          </ConvexClientProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );

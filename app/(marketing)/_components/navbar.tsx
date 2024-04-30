@@ -11,10 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
 import Link from "next/link";
 
-
-
 export const Navbar = () => {
-  const {isAuthenticated, isLoading} = useConvexAuth();
+  const { isAuthenticated, isLoading } = useConvexAuth();
   const scrolled = useScrollTop();
   return (
     <div
@@ -25,9 +23,7 @@ export const Navbar = () => {
     >
       <Logo />
       <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-2">
-        {isLoading && (
-          <Spinner/>
-        )}
+        {isLoading && <Spinner />}
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
@@ -37,24 +33,17 @@ export const Navbar = () => {
             </SignInButton>
 
             <SignInButton mode="modal">
-              <Button size="sm">
-                Get Jotion Free
-              </Button>
+              <Button size="sm">Get Jotion Free</Button>
             </SignInButton>
           </>
         )}
 
-        {isAuthenticated && 
-        !isLoading && (
+        {isAuthenticated && !isLoading && (
           <>
-          <Button variant="ghost" 
-          size="sm" asChild>
-            <Link href="/document">
-              Enter Jotion
-            </Link>
-          </Button>
-          <UserButton afterSignOutUrl="/"
-          />
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/document">Enter Jotion</Link>
+            </Button>
+            <UserButton afterSignOutUrl="/" />
           </>
         )}
 
